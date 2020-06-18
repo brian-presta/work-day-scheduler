@@ -16,5 +16,17 @@ var colorCode = function() {
             description.addClass("future")
         }
     })
-}
+};
+var descriptionClickHandler = function(event) {
+    var span = $(this).find('span')
+    var saveButton = $(this).siblings('.saveBtn').find('i')
+    var textInput = $("<textarea>").addClass("form-control").val(span.text())
+    span.replaceWith(textInput)
+    textInput.trigger("focus")
+    saveButton.on('click', function(){
+        span.text(textInput.val())
+        textInput.replaceWith(span)
+    })
+};
+$(".description").on('click',descriptionClickHandler)
 colorCode()
