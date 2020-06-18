@@ -1,3 +1,4 @@
+tasks = []
 var writeToday = function(){
     today = moment().format('MMMM Do YYYY')
     $('#currentDay').text(today)
@@ -30,8 +31,16 @@ var descriptionClickHandler = function(event) {
     saveButton.on('click', function(){
         span.text(textInput.val())
         textInput.replaceWith(span)
+        saveTasks()
     })
 };
+var saveTasks = function(){
+    taskArray = []
+    $(".description-text").each(function(){
+        taskArray.push($(this).text())
+    })
+    tasks = taskArray
+}
 var onLoad = function(){
     colorCode()
     writeToday()
