@@ -1,11 +1,20 @@
 var colorCode = function() {
-    var currentTime = moment()
+    var currentTime = moment().format('HA')
+    currentTime = moment(currentTime,'HA')
     $(".container").children().each(function(){
         var cellTime = $(this).find(".hour").text()
-        cellTime = moment(cellTime,"H A")
-        console.log(cellTime._d)
+        cellTime = moment(cellTime,"HA")
+        var description = $(this).find('.description')
+        description.removeClass("past present future")
         if (cellTime.isBefore(currentTime)) {
-            $(this).find('.description').addClass('past')
+            description.addClass('past')
+        }
+        else if (cellTime.isSame(currentTime)) {
+            description.addClass('present')
+        }
+        else {
+            description.addClass("future")
         }
     })
 }
+colorCode()
