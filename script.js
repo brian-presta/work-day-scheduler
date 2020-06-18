@@ -1,3 +1,7 @@
+var writeToday = function(){
+    today = moment().format('MMMM Do YYYY')
+    $('#currentDay').text(today)
+}
 var colorCode = function() {
     var currentTime = moment().format('HA')
     currentTime = moment(currentTime,'HA')
@@ -28,5 +32,9 @@ var descriptionClickHandler = function(event) {
         textInput.replaceWith(span)
     })
 };
+var onLoad = function(){
+    colorCode()
+    writeToday()
+}
 $(".description").on('click',descriptionClickHandler)
-colorCode()
+onLoad()
