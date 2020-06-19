@@ -70,5 +70,5 @@ colorCode()
 writeToday()
 // listen for clicks on description cells
 $(".description").on('click',descriptionClickHandler)
-// fires colorCode ever minute to keep cell color up to date
+// fires colorCode every minute to keep cell color up to date
 setInterval(colorCode,(1000*60))
